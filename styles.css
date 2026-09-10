@@ -367,17 +367,22 @@ hr.divider {
 
 /* ambient background canvas for the graphs toggle */
 .graphs-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   opacity: 0;
   transition: opacity 0.6s ease;
 }
 .graphs-canvas.graphs-active {
   opacity: 1;
+}
+
+nav,
+main {
+  position: relative;
+  z-index: 1;
 }
 
 :focus-visible {
