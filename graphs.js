@@ -3,15 +3,15 @@
 // arrives) and continuously re-triangulated with a Delaunay triangulation
 // so the mesh always uses as many triangles as the point set allows.
 
-const GRAPH_COUNT = 5;
+const GRAPH_COUNT = 10;
 const MAX_POINTS = 7;
 const GROW_INTERVAL_MIN = 1400; // ms
 const GROW_INTERVAL_MAX = 3200; // ms
 const REGION_RADIUS_MIN = 90;
 const REGION_RADIUS_MAX = 170;
 const POINT_SPEED = 0.35;
-const LIFESPAN_MIN = 9000; // ms, how long a cluster lives before dissipating
-const LIFESPAN_MAX = 16000;
+const LIFESPAN_MIN = 18000; // ms, how long a cluster lives before dissipating
+const LIFESPAN_MAX = 32000;
 const FADE_DURATION = 2000; // ms, fade-out window at the end of a lifespan
 const ACCENT = '122, 167, 255'; // matches --accent, as an rgb triplet
 
