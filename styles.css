@@ -318,6 +318,78 @@ hr.divider {
   margin: 0;
 }
 
+/* Music / Graphs toggle buttons */
+.toggle-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  background: none;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: transform 0.15s ease;
+}
+.toggle-btn:hover {
+  transform: scale(1.06);
+}
+.toggle-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  z-index: 0;
+}
+/* fill visible on hover XOR active */
+.toggle-btn:hover::before,
+.toggle-btn.active::before {
+  transform: scaleX(1);
+}
+.toggle-btn.active:hover::before {
+  transform: scaleX(0);
+}
+
+.toggle-btn .btn-label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+}
+.toggle-btn:hover .btn-label,
+.toggle-btn.active .btn-label {
+  color: #0d0d0d;
+}
+.toggle-btn.active:hover .btn-label {
+  color: var(--text-primary);
+}
+
+/* ambient background canvas for the graphs toggle */
+.graphs-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.graphs-canvas.graphs-active {
+  opacity: 1;
+}
+
+/* Spotify embed is controlled via the iFrame API but not shown visually */
+.spotify-embed-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
