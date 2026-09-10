@@ -8,13 +8,17 @@ const THEMES = {
     '--border': '#2a2a2a',
     '--text-primary': '#ececec',
     '--text-secondary': '#9a9a9a',
+    '--text-body': '#c7c7c7',
+    '--text-faint': '#7a7a7a',
   },
   light: {
     '--bg': '#f7f5f1',
     '--bg-elevated': '#ffffff',
     '--border': '#dedad2',
-    '--text-primary': '#1a1a1a',
-    '--text-secondary': '#6b6b6b',
+    '--text-primary': '#000000',
+    '--text-secondary': '#494949',
+    '--text-body': '#333333',
+    '--text-faint': '#5c5c5c',
   },
 };
 
