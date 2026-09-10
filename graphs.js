@@ -10,6 +10,9 @@ const GROW_INTERVAL_MAX = 3200; // ms
 const REGION_RADIUS_MIN = 90;
 const REGION_RADIUS_MAX = 170;
 const POINT_SPEED = 0.35;
+const LIFESPAN_MIN = 9000; // ms, how long a cluster lives before dissipating
+const LIFESPAN_MAX = 16000;
+const FADE_DURATION = 2000; // ms, fade-out window at the end of a lifespan
 const ACCENT = '122, 167, 255'; // matches --accent, as an rgb triplet
 
 let canvas, ctx;
@@ -18,12 +21,25 @@ let rafId = null;
 let running = false;
 
 class MiniGraph {
-  constructor(cx, cy, radius) {
+  constructor(cx, cy, radius, now) {
     this.cx = cx;
     this.cy = cy;
     this.radius = radius;
     this.points = [this.spawnPoint()];
-    this.nextGrowAt = performance.now() + randomBetween(GROW_INTERVAL_MIN, GROW_INTERVAL_MAX);
+    this.nextGrowAt = now + randomBetween(GROW_INTERVAL_MIN, GROW_INTERVAL_MAX);
+    this.birth = now;
+    this.lifespan = randomBetween(LIFESPAN_MIN, LIFESPAN_MAX);
+  }
+
+  fadeAlpha(now) {
+    const age = now - this.birth;
+    const remaining = this.lifespan - age;
+    if (remaining >= FADE_DURATION) return 1;
+    return Math.max(remaining / FADE_DURATION, 0);
+  }
+
+  isExpired(now) {
+    return now - this.birth >= this.lifespan;
   }
 
   spawnPoint() {
@@ -70,7 +86,7 @@ class MiniGraph {
     }
   }
 
-  draw(ctx) {
+  draw(ctx, alpha) {
     const pts = this.points;
 
     if (pts.length >= 3) {
@@ -81,9 +97,9 @@ class MiniGraph {
         ctx.lineTo(b.x, b.y);
         ctx.lineTo(c.x, c.y);
         ctx.closePath();
-        ctx.fillStyle = `rgba(${ACCENT}, 0.05)`;
+        ctx.fillStyle = `rgba(${ACCENT}, ${0.05 * alpha})`;
         ctx.fill();
-        ctx.strokeStyle = `rgba(${ACCENT}, 0.28)`;
+        ctx.strokeStyle = `rgba(${ACCENT}, ${0.28 * alpha})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       });
@@ -91,7 +107,7 @@ class MiniGraph {
       ctx.beginPath();
       ctx.moveTo(pts[0].x, pts[0].y);
       ctx.lineTo(pts[1].x, pts[1].y);
-      ctx.strokeStyle = `rgba(${ACCENT}, 0.28)`;
+      ctx.strokeStyle = `rgba(${ACCENT}, ${0.28 * alpha})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -99,7 +115,7 @@ class MiniGraph {
     pts.forEach((p) => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${ACCENT}, 0.55)`;
+      ctx.fillStyle = `rgba(${ACCENT}, ${0.55 * alpha})`;
       ctx.fill();
     });
   }
@@ -173,27 +189,42 @@ function sameEdge(e1, e2) {
 }
 
 // --- setup / lifecycle ---
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+function docHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  );
 }
 
-function seedGraphs() {
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = docHeight();
+}
+
+function spawnGraph(now) {
+  const radius = randomBetween(REGION_RADIUS_MIN, REGION_RADIUS_MAX);
+  const cx = randomBetween(radius, canvas.width - radius);
+  const cy = randomBetween(radius, canvas.height - radius);
+  return new MiniGraph(cx, cy, radius, now);
+}
+
+function seedGraphs(now) {
   graphs = [];
   for (let i = 0; i < GRAPH_COUNT; i++) {
-    const radius = randomBetween(REGION_RADIUS_MIN, REGION_RADIUS_MAX);
-    const cx = randomBetween(radius, window.innerWidth - radius);
-    const cy = randomBetween(radius, window.innerHeight - radius);
-    graphs.push(new MiniGraph(cx, cy, radius));
+    graphs.push(spawnGraph(now));
   }
 }
 
 function tick(now) {
   if (!running) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  graphs.forEach((g) => {
+  graphs.forEach((g, i) => {
+    if (g.isExpired(now)) {
+      graphs[i] = spawnGraph(now);
+      return;
+    }
     g.update(now);
-    g.draw(ctx);
+    g.draw(ctx, g.fadeAlpha(now));
   });
   rafId = requestAnimationFrame(tick);
 }
@@ -201,7 +232,8 @@ function tick(now) {
 function startGraphs() {
   if (running) return;
   running = true;
-  seedGraphs();
+  resizeCanvas();
+  seedGraphs(performance.now());
   canvas.classList.add('graphs-active');
   rafId = requestAnimationFrame(tick);
 }
