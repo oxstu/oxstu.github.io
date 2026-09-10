@@ -1,24 +1,250 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="light">
 <head>
-    <title>Hello, world!</title>
-    <style>
-        body {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 12pt;
-            color: #000;
-            background: #fff;
-            margin: 40px;
-            line-height: 1.4;
-        }
-
-        a {
-            color: #000;
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zhuoyang Pan</title>
+<meta name="description" content="Zhuoyang Pan — CIS PhD student at the University of Pennsylvania working on 3D vision, graphics, and embodied AI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    Hello, world!
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Zhuoyang Pan</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="travel.html">Travel</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<header class="hero wrap" id="about">
+  <div class="hero-grid">
+    <img class="avatar" src="assets/authors/admin/avatar.jpg" alt="Zhuoyang Pan" />
+    <div>
+      <span class="avail"><span class="dot"></span>Seeking research internships</span>
+      <h1 class="name">Zhuoyang Pan</h1>
+      <p class="title-line">First-year <strong>CIS PhD Student</strong>, <a href="https://www.upenn.edu/" target="_blank" rel="noopener">University of Pennsylvania</a></p>
+      <p class="title-line">Advised by <a href="https://www.cis.upenn.edu/~kostas/" target="_blank" rel="noopener">Prof. Kostas Daniilidis</a> at the <a href="https://www.grasp.upenn.edu/" target="_blank" rel="noopener">GRASP Lab</a></p>
+
+      <div class="bio">
+        <p>I build systems that combine <strong>3D computer vision</strong> and <strong>generative models</strong> to understand motion and enable <strong>intelligent, visually guided robots</strong>. Broadly, I'm excited about the intersection of <strong>3D vision, graphics, and embodied AI</strong>. I'm currently seeking research internship opportunities — if you think there's a good match, feel free to <a href="mailto:zhuoyangpan@outlook.com">reach out</a>.</p>
+        <p class="soft">Previously, I was a research intern at <a href="https://www.stanford.edu/" target="_blank" rel="noopener">Stanford University</a>, working with <a href="https://geometry.stanford.edu/?member=guibas" target="_blank" rel="noopener">Prof. Leonidas Guibas</a>, <a href="https://adamharley.com/" target="_blank" rel="noopener">Dr. Adam W. Harley</a>, and <a href="https://www.elliottwu.com/" target="_blank" rel="noopener">Prof. Shangzhe Wu</a>. I also spent a year at <a href="https://www.berkeley.edu/" target="_blank" rel="noopener">UC Berkeley</a> with the <a href="https://nerf.studio" target="_blank" rel="noopener">Nerfstudio</a> team at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a>, under <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank" rel="noopener">Prof. Angjoo Kanazawa</a>. I received my undergraduate degree from <a href="https://www.shanghaitech.edu.cn/eng/" target="_blank" rel="noopener">ShanghaiTech University</a>.</p>
+        <p class="soft">Outside of research, I play the piano, shoot photography, and fly drones. I'm also an avid traveler — so far I've explored over 20 countries and <a href="travel.html">regions</a> across five continents.</p>
+      </div>
+
+      <div class="socials">
+        <a class="cta" href="mailto:zhuoyangpan@outlook.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>Email
+        </a>
+        <a href="assets/uploads/resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" stroke-linejoin="round"/><path d="M14 3v5h5" stroke-linejoin="round"/></svg>CV
+        </a>
+        <a href="https://scholar.google.com/citations?user=wjUqoOsAAAAJ" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4L2 9l10 5 10-5-10-5z" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke-linejoin="round"/></svg>Scholar
+        </a>
+        <a href="https://github.com/Zhuoyang-Pan" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.9c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>GitHub
+        </a>
+        <a href="https://twitter.com/pan_zhuoyang" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-7-6.1 7H1.7l8-9.2L1 2h7l4.8 6.4L18.9 2zm-2.4 18h1.9L7.6 4H5.6l10.9 16z"/></svg>Twitter
+        </a>
+        <a href="https://www.linkedin.com/in/zhuoyang-pan-571187287/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.99H5.67v8.35h2.67zM7 8.8a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.54v-4.57c0-2.45-1.31-3.6-3.06-3.6-1.41 0-2.04.78-2.39 1.32v-1.13h-2.67c.04.75 0 8.35 0 8.35h2.67v-4.66c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.97 0 1.36.74 1.36 1.82v4.47h2.66z"/></svg>LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-strip">
+        <div>
+          <h4>Research Interests</h4>
+          <div class="tags">
+            <span>Robotics</span>
+            <span>Computer Graphics</span>
+            <span>Computer Vision</span>
+          </div>
+        </div>
+        <div>
+          <h4>Education</h4>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="deg">Ph.D. &amp; M.S. in Computer &amp; Information Science</div>
+              <div class="where">University of Pennsylvania</div>
+              <div class="yr">Aug 2025 — Present</div>
+            </div>
+            <div class="edu-item">
+              <div class="deg">B.E. in Computer Science &amp; Technology</div>
+              <div class="where">ShanghaiTech University</div>
+              <div class="yr">2021 — 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</header>
+
+<section class="wrap" id="experience">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Experience</h2></div>
+
+  <div class="exp-item">
+    <div class="exp-logo"><img src="assets/media/icons/brands/upenn.svg" alt="University of Pennsylvania" /></div>
+    <div>
+      <div class="exp-role">Research Assistant</div>
+      <div class="exp-org"><a href="https://www.grasp.upenn.edu/" target="_blank" rel="noopener">GRASP Lab, University of Pennsylvania</a></div>
+    </div>
+    <div class="exp-when">Aug 2025 — Present<br/>Philadelphia, PA</div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-logo"><img src="assets/media/icons/brands/SU.svg" alt="Stanford" /></div>
+    <div>
+      <div class="exp-role">Research Intern</div>
+      <div class="exp-org"><a href="https://www.stanford.edu/" target="_blank" rel="noopener">Stanford University</a></div>
+    </div>
+    <div class="exp-when">Jun 2024 — Dec 2024<br/>Stanford, CA</div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-logo"><img src="assets/media/icons/brands/UCB.svg" alt="UC Berkeley" /></div>
+    <div>
+      <div class="exp-role">Visiting Student, Computer Science</div>
+      <div class="exp-org"><a href="https://www.berkeley.edu/" target="_blank" rel="noopener">University of California, Berkeley</a></div>
+    </div>
+    <div class="exp-when">Aug 2023 — May 2024<br/>Berkeley, CA</div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-logo"><img src="assets/media/icons/brands/sht.svg" alt="ShanghaiTech" /></div>
+    <div>
+      <div class="exp-role">Bachelor Student, Computer Science &amp; Technology</div>
+      <div class="exp-org"><a href="https://www.shanghaitech.edu.cn/" target="_blank" rel="noopener">ShanghaiTech University</a></div>
+    </div>
+    <div class="exp-when">Sep 2021 — Jun 2025<br/>Shanghai, China</div>
+  </div>
+</section>
+
+<section class="wrap" id="projects" data-filter="all">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2 id="projTitle">Projects</h2>
+    <div class="proj-filter" role="group" aria-label="Filter projects">
+      <button type="button" data-mode="selected" aria-pressed="false">Selected</button>
+      <button type="button" data-mode="all" aria-pressed="true">All</button>
+    </div>
+  </div>
+
+  <article class="project" data-selected>
+    <div class="proj-thumb"><a href="https://kirin-ani.github.io/" target="_blank" rel="noopener"><img src="assets/publication/kirin/featured.jpg" alt="Kirin" loading="lazy" /></a></div>
+    <div>
+      <h3 class="proj-title"><a href="https://kirin-ani.github.io/" target="_blank" rel="noopener">Kirin: Animal Motion Generation from In-the-wild Video</a></h3>
+      <p class="proj-authors">Brian Nlong Zhao*, <span class="me">Zhuoyang Pan*</span>, James Matthew Rehg, Jiajun Wu, Shangzhe Wu</p>
+      <span class="proj-venue">ECCV · 2026</span>
+      <p class="proj-desc">A comprehensive framework for learning and generating 3D quadruped motion directly from large-scale video data.</p>
+      <div class="proj-links">
+        <a href="https://arxiv.org/pdf/2609.01823" target="_blank" rel="noopener">PDF</a>
+        <a href="https://kirin-ani.github.io/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="proj-thumb"><img src="assets/publication/object/featured.jpg" alt="Reisom" loading="lazy" /></div>
+    <div>
+      <h3 class="proj-title">Reisom: Zero-shot Reconstruction of In-Scene Object Manipulation</h3>
+      <p class="proj-authors">Dixuan Lin, Tianyou Wang, <span class="me">Zhuoyang Pan</span>, Yufu Wang, Lingjie Liu, Kostas Daniilidis</p>
+      <span class="proj-venue gray">Under Review · 2025</span>
+      <p class="proj-desc">A system for reconstructing in-scene object manipulation from a single monocular RGB video.</p>
+      <div class="proj-links">
+        <a href="https://arxiv.org/pdf/2512.19684" target="_blank" rel="noopener">PDF</a>
+        <a href="https://reisom2025.github.io/Reisom.github.io/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" data-selected>
+    <div class="proj-thumb"><a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener"><img src="assets/publication/animal/featured.png" alt="PosePAL" loading="lazy" /></a></div>
+    <div>
+      <h3 class="proj-title"><a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener">PosePAL: Efficient Animal Pose Labeling Using Point Trackers</a></h3>
+      <p class="proj-authors"><span class="me">Zhuoyang Pan</span>, Boxiao Pan, Guandao Yang, Adam W. Harley, Leonidas Guibas</p>
+      <span class="proj-venue">IJCV · 2026</span><span class="proj-venue">CV4Animals @ CVPR 2025 · Oral</span>
+      <p class="proj-desc">A pipeline for dense animal pose annotation by optimizing general-purpose point trackers — fine-tuning a lightweight appearance embedding from a few annotated frames to label an entire video with minimal supervision.</p>
+      <div class="proj-links">
+        <a href="https://drive.google.com/file/d/19gd4BTGpSfxeTnVK12zjdAgXHkGwySxM/view" target="_blank" rel="noopener">PDF</a>
+        <a href="https://github.com/Zhuoyang-Pan/PosePAL/" target="_blank" rel="noopener">Code</a>
+        <a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="proj-thumb"><a href="https://soar-avatar.github.io/" target="_blank" rel="noopener"><img src="assets/publication/soar/featured.png" alt="SOAR" loading="lazy" /></a></div>
+    <div>
+      <h3 class="proj-title"><a href="https://soar-avatar.github.io/" target="_blank" rel="noopener">SOAR: Self-Occluded Avatar Recovery from a Single Video</a></h3>
+      <p class="proj-authors"><span class="me">Zhuoyang Pan*</span>, Angjoo Kanazawa, Hang Gao*</p>
+      <span class="proj-venue gray">arXiv · 2024</span>
+      <p class="proj-desc">Recovering human avatars from self-occluded internet videos where people show only parts or sides of their body.</p>
+      <div class="proj-links">
+        <a href="https://soar-avatar.github.io/assets/SOAR.pdf" target="_blank" rel="noopener">PDF</a>
+        <a href="https://github.com/hangg7/soar" target="_blank" rel="noopener">Code</a>
+        <a href="https://soar-avatar.github.io/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" data-selected>
+    <div class="proj-thumb"><a href="http://www.gsplat.studio/" target="_blank" rel="noopener"><img src="assets/publication/gsplat/featured.png" alt="Gsplat" loading="lazy" /></a></div>
+    <div>
+      <h3 class="proj-title"><a href="http://www.gsplat.studio/" target="_blank" rel="noopener">gsplat: An Open-Source Library for Gaussian Splatting</a></h3>
+      <p class="proj-authors">Vickie Ye*, Ruilong Li*, Justin Kerr, Matias Turkulainen, Brent Yi, <span class="me">Zhuoyang Pan</span>, Otto Seiskari, Jianbo Ye, Jeffrey Hu, Matthew Tancik, Angjoo Kanazawa</p>
+      <span class="proj-venue">JMLR MLOSS · 2025</span>
+      <p class="proj-desc">An open-source library for CUDA-accelerated differentiable rasterization of 3D Gaussians with Python bindings. I worked on the Python bindings, CUDA testing, and alpha-channel rendering.</p>
+      <div class="proj-links">
+        <a href="https://arxiv.org/pdf/2409.06765" target="_blank" rel="noopener">PDF</a>
+        <a href="https://github.com/nerfstudio-project/gsplat" target="_blank" rel="noopener">Code</a>
+        <a href="http://www.gsplat.studio/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="proj-thumb"><a href="http://www.nerf.studio/" target="_blank" rel="noopener"><img src="assets/publication/nerfstudio/featured.png" alt="Nerfstudio" loading="lazy" /></a></div>
+    <div>
+      <h3 class="proj-title"><a href="http://www.nerf.studio/" target="_blank" rel="noopener">Nerfstudio</a></h3>
+      <p class="proj-authors">Nerfstudio Team · BAIR, UC Berkeley</p>
+      <span class="proj-venue gray">Open-Source Framework</span>
+      <p class="proj-desc">A modular framework for neural radiance field development. I worked mainly on the integration of Gaussian splatting.</p>
+      <div class="proj-links">
+        <a href="https://github.com/nerfstudio-project/nerfstudio/" target="_blank" rel="noopener">Code</a>
+        <a href="http://www.nerf.studio/" target="_blank" rel="noopener">Project ↗</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <p>© 2026 Zhuoyang Pan · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a></p>
+    <div class="foot-links">
+      <a href="mailto:zhuoyangpan@outlook.com">Email</a>
+      <a href="https://github.com/Zhuoyang-Pan" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=wjUqoOsAAAAJ" target="_blank" rel="noopener">Scholar</a>
+      <a href="#top">↑ Top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
 </body>
 </html>
