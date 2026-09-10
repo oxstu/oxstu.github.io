@@ -1,7 +1,7 @@
 // Ambient background graphics: a handful of small point clusters, each
 // growing via a random walk (max 7 points, oldest dropped once the 7th
 // arrives) and continuously re-triangulated with a Delaunay triangulation
-// so the mesh always uses as many triangles as the point set allows.
+// so the mesh always uses as many triangles as the point set allows. .
 
 const GRAPH_COUNT = 10;
 const MAX_POINTS = 7;
