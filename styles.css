@@ -109,7 +109,6 @@ main {
   background: linear-gradient(155deg, #2a2a2a, #161616);
   border: 1px solid var(--border);
   display: flex;
-  object-fit: cover;
   align-items: center;
   justify-content: center;
   font-family: var(--mono);
