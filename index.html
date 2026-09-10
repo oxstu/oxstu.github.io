@@ -1,250 +1,363 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zhuoyang Pan</title>
-<meta name="description" content="Zhuoyang Pan — CIS PhD student at the University of Pennsylvania working on 3D vision, graphics, and embodied AI." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg-elevated: #161616;
+    --border: #2a2a2a;
+    --text-primary: #ececec;
+    --text-secondary: #9a9a9a;
+    --accent: #7aa7ff;
+    --accent-bg: rgba(122, 167, 255, 0.12);
+    --serif: 'Newsreader', serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --max-width: 880px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(122, 167, 255, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  a:hover { text-decoration-color: var(--accent); }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 28px 24px;
+  }
+
+  .site-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .theme-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    background: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .theme-dot:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .avatar {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(155deg, #2a2a2a, #161616);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    animation: rise 0.6s ease forwards;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid rgba(122, 167, 255, 0.25);
+    border-radius: 999px;
+    padding: 7px 14px;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: rise 0.6s ease 0.05s forwards;
+  }
+  .badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 3.4rem;
+    line-height: 1.05;
+    margin: 0 0 20px;
+    opacity: 0;
+    animation: rise 0.6s ease 0.1s forwards;
+  }
+
+  .role-line {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin: 0 0 6px;
+    opacity: 0;
+    animation: rise 0.6s ease 0.15s forwards;
+  }
+  .role-line strong { color: var(--text-primary); font-weight: 600; }
+
+  .bio {
+    margin-top: 28px;
+    color: #c7c7c7;
+    max-width: 62ch;
+    opacity: 0;
+    animation: rise 0.6s ease 0.2s forwards;
+  }
+  .bio p { margin: 0 0 18px; }
+  .bio strong { color: var(--text-primary); font-weight: 600; }
+
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+    opacity: 0;
+    animation: rise 0.6s ease 0.25s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover { border-color: var(--text-secondary); transform: translateY(-1px); }
+
+  .btn.primary {
+    background: var(--accent);
+    color: #0d0d0d;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .btn.primary:hover { background: #8fb4ff; border-color: #8fb4ff; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 64px 0 40px;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .col-label {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+  }
+
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+  }
+
+  .edu-item {
+    margin-bottom: 18px;
+  }
+  .edu-item .school {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .edu-item .detail {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .avatar { width: 140px; height: 140px; }
+    h1 { font-size: 2.4rem; }
+    .columns { grid-template-columns: 1fr; gap: 32px; }
+    nav { flex-wrap: wrap; gap: 12px; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="#top" class="nav-name">Zhuoyang Pan</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="travel.html">Travel</a>
-      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
-      </button>
-    </div>
+  <a class="site-name" href="#">Your Name</a>
+  <div class="nav-links">
+    <a href="#about">ABOUT</a>
+    <a href="#experience">EXPERIENCE</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#travel">TRAVEL</a>
+    <button class="theme-dot" id="themeToggle" aria-label="Toggle theme">&#9788;</button>
   </div>
 </nav>
 
-<span id="top"></span>
-
-<header class="hero wrap" id="about">
-  <div class="hero-grid">
-    <img class="avatar" src="assets/authors/admin/avatar.jpg" alt="Zhuoyang Pan" />
+<main>
+  <section class="hero" id="about">
+    <div class="avatar">your photo here</div>
     <div>
-      <span class="avail"><span class="dot"></span>Seeking research internships</span>
-      <h1 class="name">Zhuoyang Pan</h1>
-      <p class="title-line">First-year <strong>CIS PhD Student</strong>, <a href="https://www.upenn.edu/" target="_blank" rel="noopener">University of Pennsylvania</a></p>
-      <p class="title-line">Advised by <a href="https://www.cis.upenn.edu/~kostas/" target="_blank" rel="noopener">Prof. Kostas Daniilidis</a> at the <a href="https://www.grasp.upenn.edu/" target="_blank" rel="noopener">GRASP Lab</a></p>
+      <div class="badge"><span class="dot"></span> Open to new opportunities</div>
+      <h1>Your Name</h1>
+      <p class="role-line"><strong>Your Title</strong>, Your Organization</p>
+      <p class="role-line">Working with <a href="#">Mentor Name</a> at the <a href="#">Lab or Team Name</a></p>
 
       <div class="bio">
-        <p>I build systems that combine <strong>3D computer vision</strong> and <strong>generative models</strong> to understand motion and enable <strong>intelligent, visually guided robots</strong>. Broadly, I'm excited about the intersection of <strong>3D vision, graphics, and embodied AI</strong>. I'm currently seeking research internship opportunities — if you think there's a good match, feel free to <a href="mailto:zhuoyangpan@outlook.com">reach out</a>.</p>
-        <p class="soft">Previously, I was a research intern at <a href="https://www.stanford.edu/" target="_blank" rel="noopener">Stanford University</a>, working with <a href="https://geometry.stanford.edu/?member=guibas" target="_blank" rel="noopener">Prof. Leonidas Guibas</a>, <a href="https://adamharley.com/" target="_blank" rel="noopener">Dr. Adam W. Harley</a>, and <a href="https://www.elliottwu.com/" target="_blank" rel="noopener">Prof. Shangzhe Wu</a>. I also spent a year at <a href="https://www.berkeley.edu/" target="_blank" rel="noopener">UC Berkeley</a> with the <a href="https://nerf.studio" target="_blank" rel="noopener">Nerfstudio</a> team at <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener">BAIR</a>, under <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank" rel="noopener">Prof. Angjoo Kanazawa</a>. I received my undergraduate degree from <a href="https://www.shanghaitech.edu.cn/eng/" target="_blank" rel="noopener">ShanghaiTech University</a>.</p>
-        <p class="soft">Outside of research, I play the piano, shoot photography, and fly drones. I'm also an avid traveler — so far I've explored over 20 countries and <a href="travel.html">regions</a> across five continents.</p>
+        <p>Write one or two sentences about what you work on and why it matters to you. Bold the <strong>key terms</strong> that describe your focus areas, the way you'd want a reader to skim it in five seconds.</p>
+        <p>Add a second paragraph for background — previous roles, schools, or projects, linking out to <a href="#">people</a> and <a href="#">places</a> you've worked with.</p>
+        <p>Optionally, a short personal line: hobbies, interests, or anything that makes the page feel like you.</p>
       </div>
 
-      <div class="socials">
-        <a class="cta" href="mailto:zhuoyangpan@outlook.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>Email
-        </a>
-        <a href="assets/uploads/resume.pdf" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" stroke-linejoin="round"/><path d="M14 3v5h5" stroke-linejoin="round"/></svg>CV
-        </a>
-        <a href="https://scholar.google.com/citations?user=wjUqoOsAAAAJ" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4L2 9l10 5 10-5-10-5z" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke-linejoin="round"/></svg>Scholar
-        </a>
-        <a href="https://github.com/Zhuoyang-Pan" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.9c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>GitHub
-        </a>
-        <a href="https://twitter.com/pan_zhuoyang" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-7-6.1 7H1.7l8-9.2L1 2h7l4.8 6.4L18.9 2zm-2.4 18h1.9L7.6 4H5.6l10.9 16z"/></svg>Twitter
-        </a>
-        <a href="https://www.linkedin.com/in/zhuoyang-pan-571187287/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.99H5.67v8.35h2.67zM7 8.8a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.54v-4.57c0-2.45-1.31-3.6-3.06-3.6-1.41 0-2.04.78-2.39 1.32v-1.13h-2.67c.04.75 0 8.35 0 8.35h2.67v-4.66c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.97 0 1.36.74 1.36 1.82v4.47h2.66z"/></svg>LinkedIn
-        </a>
+      <div class="links-row">
+        <a class="btn primary" href="mailto:you@example.com">Email</a>
+        <a class="btn" href="#">CV</a>
+        <a class="btn" href="#">Scholar</a>
+        <a class="btn" href="#">GitHub</a>
+        <a class="btn" href="#">Twitter</a>
+        <a class="btn" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <div class="columns">
+    <div id="experience">
+      <p class="col-label">RESEARCH INTERESTS</p>
+      <div class="pill-group">
+        <span class="pill">Interest one</span>
+        <span class="pill">Interest two</span>
+        <span class="pill">Interest three</span>
+      </div>
+    </div>
+    <div>
+      <p class="col-label">EDUCATION</p>
+      <div class="edu-item">
+        <div class="school">School Name</div>
+        <div class="detail">Degree, Year</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">Previous School</div>
+        <div class="detail">Degree, Year</div>
       </div>
     </div>
   </div>
+</main>
 
-  <div class="meta-strip">
-        <div>
-          <h4>Research Interests</h4>
-          <div class="tags">
-            <span>Robotics</span>
-            <span>Computer Graphics</span>
-            <span>Computer Vision</span>
-          </div>
-        </div>
-        <div>
-          <h4>Education</h4>
-          <div class="edu-list">
-            <div class="edu-item">
-              <div class="deg">Ph.D. &amp; M.S. in Computer &amp; Information Science</div>
-              <div class="where">University of Pennsylvania</div>
-              <div class="yr">Aug 2025 — Present</div>
-            </div>
-            <div class="edu-item">
-              <div class="deg">B.E. in Computer Science &amp; Technology</div>
-              <div class="where">ShanghaiTech University</div>
-              <div class="yr">2021 — 2025</div>
-            </div>
-          </div>
-        </div>
-      </div>
-</header>
+<script>
+  // Simple light/dark toggle. Swap the variable values to taste.
+  const toggle = document.getElementById('themeToggle');
+  let isDark = true;
+  toggle.addEventListener('click', () => {
+    isDark = !isDark;
+    document.documentElement.style.setProperty('--bg', isDark ? '#0d0d0d' : '#f7f5f1');
+    document.documentElement.style.setProperty('--bg-elevated', isDark ? '#161616' : '#ffffff');
+    document.documentElement.style.setProperty('--border', isDark ? '#2a2a2a' : '#dedad2');
+    document.documentElement.style.setProperty('--text-primary', isDark ? '#ececec' : '#1a1a1a');
+    document.documentElement.style.setProperty('--text-secondary', isDark ? '#9a9a9a' : '#6b6b6b');
+    toggle.innerHTML = isDark ? '&#9788;' : '&#9790;';
+  });
+</script>
 
-<section class="wrap" id="experience">
-  <div class="sec-head"><span class="sec-num">01</span><h2>Experience</h2></div>
-
-  <div class="exp-item">
-    <div class="exp-logo"><img src="assets/media/icons/brands/upenn.svg" alt="University of Pennsylvania" /></div>
-    <div>
-      <div class="exp-role">Research Assistant</div>
-      <div class="exp-org"><a href="https://www.grasp.upenn.edu/" target="_blank" rel="noopener">GRASP Lab, University of Pennsylvania</a></div>
-    </div>
-    <div class="exp-when">Aug 2025 — Present<br/>Philadelphia, PA</div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-logo"><img src="assets/media/icons/brands/SU.svg" alt="Stanford" /></div>
-    <div>
-      <div class="exp-role">Research Intern</div>
-      <div class="exp-org"><a href="https://www.stanford.edu/" target="_blank" rel="noopener">Stanford University</a></div>
-    </div>
-    <div class="exp-when">Jun 2024 — Dec 2024<br/>Stanford, CA</div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-logo"><img src="assets/media/icons/brands/UCB.svg" alt="UC Berkeley" /></div>
-    <div>
-      <div class="exp-role">Visiting Student, Computer Science</div>
-      <div class="exp-org"><a href="https://www.berkeley.edu/" target="_blank" rel="noopener">University of California, Berkeley</a></div>
-    </div>
-    <div class="exp-when">Aug 2023 — May 2024<br/>Berkeley, CA</div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-logo"><img src="assets/media/icons/brands/sht.svg" alt="ShanghaiTech" /></div>
-    <div>
-      <div class="exp-role">Bachelor Student, Computer Science &amp; Technology</div>
-      <div class="exp-org"><a href="https://www.shanghaitech.edu.cn/" target="_blank" rel="noopener">ShanghaiTech University</a></div>
-    </div>
-    <div class="exp-when">Sep 2021 — Jun 2025<br/>Shanghai, China</div>
-  </div>
-</section>
-
-<section class="wrap" id="projects" data-filter="all">
-  <div class="sec-head">
-    <span class="sec-num">02</span>
-    <h2 id="projTitle">Projects</h2>
-    <div class="proj-filter" role="group" aria-label="Filter projects">
-      <button type="button" data-mode="selected" aria-pressed="false">Selected</button>
-      <button type="button" data-mode="all" aria-pressed="true">All</button>
-    </div>
-  </div>
-
-  <article class="project" data-selected>
-    <div class="proj-thumb"><a href="https://kirin-ani.github.io/" target="_blank" rel="noopener"><img src="assets/publication/kirin/featured.jpg" alt="Kirin" loading="lazy" /></a></div>
-    <div>
-      <h3 class="proj-title"><a href="https://kirin-ani.github.io/" target="_blank" rel="noopener">Kirin: Animal Motion Generation from In-the-wild Video</a></h3>
-      <p class="proj-authors">Brian Nlong Zhao*, <span class="me">Zhuoyang Pan*</span>, James Matthew Rehg, Jiajun Wu, Shangzhe Wu</p>
-      <span class="proj-venue">ECCV · 2026</span>
-      <p class="proj-desc">A comprehensive framework for learning and generating 3D quadruped motion directly from large-scale video data.</p>
-      <div class="proj-links">
-        <a href="https://arxiv.org/pdf/2609.01823" target="_blank" rel="noopener">PDF</a>
-        <a href="https://kirin-ani.github.io/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="project">
-    <div class="proj-thumb"><img src="assets/publication/object/featured.jpg" alt="Reisom" loading="lazy" /></div>
-    <div>
-      <h3 class="proj-title">Reisom: Zero-shot Reconstruction of In-Scene Object Manipulation</h3>
-      <p class="proj-authors">Dixuan Lin, Tianyou Wang, <span class="me">Zhuoyang Pan</span>, Yufu Wang, Lingjie Liu, Kostas Daniilidis</p>
-      <span class="proj-venue gray">Under Review · 2025</span>
-      <p class="proj-desc">A system for reconstructing in-scene object manipulation from a single monocular RGB video.</p>
-      <div class="proj-links">
-        <a href="https://arxiv.org/pdf/2512.19684" target="_blank" rel="noopener">PDF</a>
-        <a href="https://reisom2025.github.io/Reisom.github.io/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="project" data-selected>
-    <div class="proj-thumb"><a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener"><img src="assets/publication/animal/featured.png" alt="PosePAL" loading="lazy" /></a></div>
-    <div>
-      <h3 class="proj-title"><a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener">PosePAL: Efficient Animal Pose Labeling Using Point Trackers</a></h3>
-      <p class="proj-authors"><span class="me">Zhuoyang Pan</span>, Boxiao Pan, Guandao Yang, Adam W. Harley, Leonidas Guibas</p>
-      <span class="proj-venue">IJCV · 2026</span><span class="proj-venue">CV4Animals @ CVPR 2025 · Oral</span>
-      <p class="proj-desc">A pipeline for dense animal pose annotation by optimizing general-purpose point trackers — fine-tuning a lightweight appearance embedding from a few annotated frames to label an entire video with minimal supervision.</p>
-      <div class="proj-links">
-        <a href="https://drive.google.com/file/d/19gd4BTGpSfxeTnVK12zjdAgXHkGwySxM/view" target="_blank" rel="noopener">PDF</a>
-        <a href="https://github.com/Zhuoyang-Pan/PosePAL/" target="_blank" rel="noopener">Code</a>
-        <a href="https://zhuoyang-pan.github.io/animal-labeling/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="project">
-    <div class="proj-thumb"><a href="https://soar-avatar.github.io/" target="_blank" rel="noopener"><img src="assets/publication/soar/featured.png" alt="SOAR" loading="lazy" /></a></div>
-    <div>
-      <h3 class="proj-title"><a href="https://soar-avatar.github.io/" target="_blank" rel="noopener">SOAR: Self-Occluded Avatar Recovery from a Single Video</a></h3>
-      <p class="proj-authors"><span class="me">Zhuoyang Pan*</span>, Angjoo Kanazawa, Hang Gao*</p>
-      <span class="proj-venue gray">arXiv · 2024</span>
-      <p class="proj-desc">Recovering human avatars from self-occluded internet videos where people show only parts or sides of their body.</p>
-      <div class="proj-links">
-        <a href="https://soar-avatar.github.io/assets/SOAR.pdf" target="_blank" rel="noopener">PDF</a>
-        <a href="https://github.com/hangg7/soar" target="_blank" rel="noopener">Code</a>
-        <a href="https://soar-avatar.github.io/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="project" data-selected>
-    <div class="proj-thumb"><a href="http://www.gsplat.studio/" target="_blank" rel="noopener"><img src="assets/publication/gsplat/featured.png" alt="Gsplat" loading="lazy" /></a></div>
-    <div>
-      <h3 class="proj-title"><a href="http://www.gsplat.studio/" target="_blank" rel="noopener">gsplat: An Open-Source Library for Gaussian Splatting</a></h3>
-      <p class="proj-authors">Vickie Ye*, Ruilong Li*, Justin Kerr, Matias Turkulainen, Brent Yi, <span class="me">Zhuoyang Pan</span>, Otto Seiskari, Jianbo Ye, Jeffrey Hu, Matthew Tancik, Angjoo Kanazawa</p>
-      <span class="proj-venue">JMLR MLOSS · 2025</span>
-      <p class="proj-desc">An open-source library for CUDA-accelerated differentiable rasterization of 3D Gaussians with Python bindings. I worked on the Python bindings, CUDA testing, and alpha-channel rendering.</p>
-      <div class="proj-links">
-        <a href="https://arxiv.org/pdf/2409.06765" target="_blank" rel="noopener">PDF</a>
-        <a href="https://github.com/nerfstudio-project/gsplat" target="_blank" rel="noopener">Code</a>
-        <a href="http://www.gsplat.studio/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="project">
-    <div class="proj-thumb"><a href="http://www.nerf.studio/" target="_blank" rel="noopener"><img src="assets/publication/nerfstudio/featured.png" alt="Nerfstudio" loading="lazy" /></a></div>
-    <div>
-      <h3 class="proj-title"><a href="http://www.nerf.studio/" target="_blank" rel="noopener">Nerfstudio</a></h3>
-      <p class="proj-authors">Nerfstudio Team · BAIR, UC Berkeley</p>
-      <span class="proj-venue gray">Open-Source Framework</span>
-      <p class="proj-desc">A modular framework for neural radiance field development. I worked mainly on the integration of Gaussian splatting.</p>
-      <div class="proj-links">
-        <a href="https://github.com/nerfstudio-project/nerfstudio/" target="_blank" rel="noopener">Code</a>
-        <a href="http://www.nerf.studio/" target="_blank" rel="noopener">Project ↗</a>
-      </div>
-    </div>
-  </article>
-</section>
-
-<footer class="wrap">
-  <div class="foot-grid">
-    <p>© 2026 Zhuoyang Pan · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a></p>
-    <div class="foot-links">
-      <a href="mailto:zhuoyangpan@outlook.com">Email</a>
-      <a href="https://github.com/Zhuoyang-Pan" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://scholar.google.com/citations?user=wjUqoOsAAAAJ" target="_blank" rel="noopener">Scholar</a>
-      <a href="#top">↑ Top</a>
-    </div>
-  </div>
-</footer>
-
-<script src="theme.js"></script>
 </body>
 </html>
