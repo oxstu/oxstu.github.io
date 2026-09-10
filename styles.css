@@ -276,6 +276,8 @@ hr.divider {
   flex-shrink: 0;
 }
 .school-logo--haverford {
+  width: 57px;
+  height: 57px;
   background: #ffffff;
   border-radius: 6px;
   padding: 4px;
@@ -292,6 +294,28 @@ hr.divider {
   h1 { font-size: 2.4rem; }
   .columns { grid-template-columns: 1fr; gap: 32px; }
   nav { flex-wrap: wrap; gap: 12px; }
+}
+
+.etymology {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  max-width: 62ch;
+}
+
+.etymology-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  margin: 0 0 10px;
+}
+
+.etymology p:not(.etymology-title) {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #7a7a7a;
+  margin: 0;
 }
 
 :focus-visible {
