@@ -148,9 +148,19 @@ function delaunay(points) {
 }
 
 function inCircumcircle(p, a, b, c) {
-  const ax = a.x - p.x, ay = a.y - p.y;
-  const bx = b.x - p.x, by = b.y - p.y;
-  const cx = c.x - p.x, cy = c.y - p.y;
+  // The in-circle test below only gives the right answer if a, b, c are
+  // wound counter-clockwise. Detect the winding and swap if needed so the
+  // test is correct regardless of how the triangle was built.
+  const orientation = (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y);
+  let A = a, B = b, C = c;
+  if (orientation < 0) {
+    B = c;
+    C = b;
+  }
+
+  const ax = A.x - p.x, ay = A.y - p.y;
+  const bx = B.x - p.x, by = B.y - p.y;
+  const cx = C.x - p.x, cy = C.y - p.y;
   const det =
     (ax * ax + ay * ay) * (bx * cy - cx * by) -
     (bx * bx + by * by) * (ax * cy - cx * ay) +
